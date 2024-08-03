@@ -19,7 +19,7 @@ window = fsg.Window("My To-do App",
                     layout=layout,font="Verdana")
 
 while True:
-    event, values = window.read()
+    event, values = window.read(timeout = 1000)
     window["clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
     print(event,values)
     if event == "Add":
