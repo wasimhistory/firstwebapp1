@@ -44,16 +44,19 @@ while True:
         #print("Here")
         window['New-Todo'].update(value = values['todos'][0])
     elif event == "Complete":
-        print("Here")
-        complete_item = values['todos'][0]
-        todos = functions.get_todos()
-        #index = todos.index(complete_item)
-        #todos[index] = new_todo
-        todos.remove(complete_item)
-        functions.write_todos(todos)
-        window['todos'].update(values=todos)
-        window['New-Todo'].update(value='')
-        #print(complete_item)
+        #print("Here")
+        try:
+            complete_item = values['todos'][0]
+            todos = functions.get_todos()
+            #index = todos.index(complete_item)
+            #todos[index] = new_todo
+            todos.remove(complete_item)
+            functions.write_todos(todos)
+            window['todos'].update(values=todos)
+            window['New-Todo'].update(value='')
+        except IndexError:
+            fsg.popup("Please select item first", title="Popup", font="verdana")
+            #print(complete_item)
     elif event == "Exit":
         exit()
     if event == fsg.WIN_CLOSED:
